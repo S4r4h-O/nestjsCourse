@@ -1,0 +1,16 @@
+### 
+
+GET http://localhost:3000 HTTP/1.1
+Accept: application/json
+
+
+### 
+
+GET http://localhost:3000/app/bye HTTP/1.1
+Accept: application/json
+
+
+### 
+
+GET http://localhost:3000/abc HTTP/1.1
+Accept: application/json
