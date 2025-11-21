@@ -1,5 +1,1 @@
-{
-  "108": { "id": 108, "content": "Test message" },
-  "890": { "id": 890, "content": "Hello World" }
-}
-
+{"108":{"id":108,"content":"Test message"},"303":{"id":303,"content":"Message after DI"},"890":{"id":890,"content":"Hello World"}}
