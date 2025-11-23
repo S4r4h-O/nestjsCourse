@@ -19,3 +19,9 @@ Content-Type: application/json
 
 GET http://localhost:3000/auth?email=email@example.com HTTP/1.1
 Content-Type: application/json
+
+
+### Delete an user with id
+
+DELETE http://localhost:3000/auth/1 HTTP/1.1
+Content-Type: application/json
