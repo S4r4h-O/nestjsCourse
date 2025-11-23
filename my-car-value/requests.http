@@ -25,6 +25,11 @@ Content-Type: application/json
 GET http://.localhost:3000/auth/whoami HTTP/1.1
 
 
+### Sign out the currently signed in user
+
+POST http://localhost:3000/auth/signout HTTP/1.1
+
+
 ### Find an user with id
 
 GET http://localhost:3000/auth/3 HTTP/1.1
