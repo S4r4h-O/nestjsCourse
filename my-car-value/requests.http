@@ -23,7 +23,6 @@ Content-Type: application/json
 ### Get the currently signed in user
 
 GET http://.localhost:3000/auth/whoami HTTP/1.1
-Cookie: session=eyJ1c2VySWQiOjZ9;session.sig=xc4zSQcRZxGxnoOWj0DMMQr_sd0
 
 
 ### Sign out the currently signed in user
