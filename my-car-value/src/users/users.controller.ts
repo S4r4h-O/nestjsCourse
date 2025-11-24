@@ -9,25 +9,24 @@ import {
   Post,
   Query,
   Session,
-  UseInterceptors,
 } from '@nestjs/common';
 
 import { Serialize } from 'src/interceptors/serialize.interceptor';
 import { AuthService } from './auth.service';
 import { CurrentUser } from './decorators/current-user.decorator';
 import { CreateUserDto, UpdateUserDto, UserDto } from './dtos';
-import { CurrentUserInterceptor } from './interceptors/current-user.interceptor';
 import { User } from './user.entity';
 import { UsersService } from './users.service';
 
-@Controller('auth')
-@Serialize(UserDto)
-@UseInterceptors(CurrentUserInterceptor)
+// @UseInterceptors(CurrentUserInterceptor)
 /* The CurrentUserInterceptor loads the user
  * and the decorator passes the user to the Controller
  * Without the decorator, every controller should have
  * req.currentUser
  */
+
+@Controller('auth')
+@Serialize(UserDto)
 export class UsersController {
   constructor(
     private usersService: UsersService,
