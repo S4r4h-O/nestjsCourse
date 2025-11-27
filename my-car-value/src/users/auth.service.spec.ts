@@ -1,11 +1,11 @@
 import { Test } from '@nestjs/testing';
 
 import { AuthService } from './auth.service';
-import { UsersService } from './users.service';
 import { User } from './user.entity';
+import { UsersService } from './users.service';
 
 describe('AuthService', () => {
-  let service = AuthService;
+  let service: AuthService;
 
   beforeEach(async () => {
     // create a fake copy of the users service
@@ -30,5 +30,14 @@ describe('AuthService', () => {
 
   it('can create an instance of auth service', async () => {
     expect(service).toBeDefined();
+  });
+
+  it('creates a new user with a salted and hashed password', async () => {
+    const user = await service.signUp('blablabla@email.com', 'blablabla');
+
+    expect(user.password).not.toEqual('blablabla');
+    const [salt, hash] = user.password.split('.');
+    expect(salt).toBeDefined();
+    expect(hash).toBeDefined();
   });
 });
