@@ -12,18 +12,38 @@ describe('UsersController', () => {
 
   beforeEach(async () => {
     fakeUsersServices = {
-      findOne: () => {},
-      find: () => {},
-      remove: () => {},
-      update: () => {},
+      findOne: (id: number) => {
+        return Promise.resolve({
+          id,
+          email: 'email@email.com',
+          password: 'password',
+        } as User);
+      },
+      find: (email: string) => {
+        return Promise.resolve([
+          { id: 1, email, password: 'password' } as User,
+        ]);
+      },
+      // remove: () => {},
+      // update: () => {},
     };
     fakeAuthService = {
-      signUp: () => {},
-      signIn: () => {},
+      // signUp: () => {},
+      // signIn: () => {},
     };
 
     const module: TestingModule = await Test.createTestingModule({
       controllers: [UsersController],
+      providers: [
+        {
+          provide: UsersService,
+          useValue: fakeUsersServices,
+        },
+        {
+          provide: AuthService,
+          useValue: fakeAuthService,
+        },
+      ],
     }).compile();
 
     controller = module.get<UsersController>(UsersController);
