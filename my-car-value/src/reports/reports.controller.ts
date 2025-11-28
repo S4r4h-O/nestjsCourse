@@ -5,6 +5,7 @@ import {
   Param,
   Patch,
   Post,
+  Query,
   UseGuards,
 } from '@nestjs/common';
 
@@ -13,12 +14,20 @@ import { AuthGuard } from 'src/guards/auth.guard';
 import { Serialize } from 'src/interceptors/serialize.interceptor';
 import { CurrentUser } from 'src/users/decorators/current-user.decorator';
 import { User } from 'src/users/user.entity';
-import { ApproveReportDto, CreateReportDto, ReportDto } from './dtos';
+import {
+  ApproveReportDto,
+  CreateReportDto,
+  GetEstimateDto,
+  ReportDto,
+} from './dtos';
 import { ReportsService } from './reports.service';
 
 @Controller('reports')
 export class ReportsController {
   constructor(private reportsService: ReportsService) {}
+
+  @Get()
+  getEstimate(@Query() query: GetEstimateDto) {}
 
   @Post()
   @UseGuards(AuthGuard)
