@@ -27,8 +27,8 @@ export class ReportsController {
   constructor(private reportsService: ReportsService) {}
 
   @Get()
-  getEstimate(@Query() query: GetEstimateDto) {
-    this.reportsService.createEstimate(query);
+  async getEstimate(@Query() query: GetEstimateDto) {
+    return await this.reportsService.createEstimate(query);
   }
 
   @Post()
